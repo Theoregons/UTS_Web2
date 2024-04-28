@@ -1,5 +1,5 @@
 <?php 
-    $koneksi = mysqli_connect("localhost", "root", "", "mahasiswa");
+    $koneksi = mysqli_connect("localhost", "root", "", "soal2");
 
     function query($query) {
         global $koneksi;
