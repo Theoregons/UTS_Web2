@@ -1,8 +1,7 @@
 <?php 
     require 'function.php';
-
     $mahasiswa = query("SELECT * FROM data_mhs");
-          
+    
     if(isset($_POST["submit"])){  
       if(tambah($_POST) > 0 ){
           // echo "berhasil diubah";
@@ -119,6 +118,10 @@
                   <p>Email : <?= $mhs['email']; ?></p>
                   <div class="social gap-2">
                     <a href=""><i class="ri-phone-fill"></i></a><?= $mhs['notlp']; ?> 
+                  </div>
+                  <div class="mt-3"> 
+                      <a href="ubah.php?id=<?=$mhs['id'];?>">Edit</a> |
+                      <a href="hapus.php?id=<?=$mhs['id'];?>">Hapus</a>
                   </div>
                 </div>
               </div>

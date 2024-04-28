@@ -38,7 +38,10 @@
         $query = "insert into data_mhs values ('' , '$file_name', '$nim', '$nama', '$notlp', '$email')";
         
         mysqli_query($koneksi, $query);
+        header("Location: index.php");
+
         return mysqli_affected_rows($koneksi);
+        
     }
     function ubah($data) {
         global $koneksi;
