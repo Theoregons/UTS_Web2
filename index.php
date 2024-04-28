@@ -10,6 +10,14 @@
       }
     }
 
+    if(isset($_POST["update"])){  
+      if(ubah($_POST) > 0 ){
+          echo "berhasil diubah";
+      } else {
+          echo "Gagal diubah"; 
+      }
+  }
+  
     // if(isset($_POST["cari"])){  
     //   $mahasiswa = cari($_POST["keyword"]);
     // }
@@ -60,7 +68,7 @@
   <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="index.html">Arsha</a></h1>
+      <h1 class="logo me-auto"><a href="index.html">UTS WEB 2</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -119,8 +127,10 @@
                   <div class="social gap-2">
                     <a href=""><i class="ri-phone-fill"></i></a><?= $mhs['notlp']; ?> 
                   </div>
-                  <div class="mt-3"> 
-                      <a href="ubah.php?id=<?=$mhs['id'];?>">Edit</a> |
+                  <div class="mt-3">  
+                      <a href="ubah.php?id=<?=$mhs['id'];?>" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Edit
+                      </a>   |
                       <a href="hapus.php?id=<?=$mhs['id'];?>">Hapus</a>
                   </div>
                 </div>
@@ -132,17 +142,55 @@
       </div>
     </section><!-- End About Us Section -->
 
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Data</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <form action="" method="post" class="php-email-form" enctype="multipart/form-data"> 
+          <div class="modal-body">
+                    <input type="hidden" name="id" id="id" required value="<?= $mhs["id"] ?>"> 
+                    <div class="form-group my-3">
+                        <label for="">NIM : </label>
+                        <input class="form-control" type="text" name="nim" id="nim" required value="<?= $mhs["nim"] ?>">
+                    </div>
+                    <div class="form-group my-3">
+                        <label for="">Nama : </label>
+                        <input class="form-control" type="text" name="nama" id="nama" required value="<?= $mhs["nama"] ?>">
+                    </div>
+                    <div class="form-group my-3">
+                        <label for="">Email : </label>
+                        <input class="form-control" type="text" name="email" id="email" required value="<?= $mhs["email"] ?>">
+                    </div>
+                    <div class="form-group my-3">
+                        <label for="">Jurusan : </label>
+                        <input class="form-control" type="text" name="notlp" id="notlp" required value="<?= $mhs["notlp"] ?>">
+                    </div>
+                    <input type="hidden" name="gambar" id="gambar" required value="<?= $mhs["gambar"] ?>">                     
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
+                <button class="btn btn-primary" type="update" name="update">Simpan</button>
+              </div>
+            </form>
+        </div>
+      </div>
+    </div>
+
     <!-- ======= Cta Section ======= -->
     <section id="cta" class="cta">
       <div class="container" data-aos="zoom-in">
 
         <div class="row">
           <div class="col-lg-9 text-center text-lg-start">
-            <h3>Call To Action</h3>
+            <h3>Action</h3>
             <p> Perbarui informasi kontak Anda dengan mudah! Isi formulir di bawah ini untuk menambahkan nomor telepon baru Anda</p>
           </div>
           <div class="col-lg-3 cta-btn-container text-center">
-            <a class="cta-btn align-middle" href="#">Call To Action</a>
+            <a class="cta-btn align-middle" href="#contact">Call To Action</a>
           </div>
         </div>
 

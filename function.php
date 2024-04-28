@@ -58,10 +58,13 @@
             nim = '$nim',
             email = '$email',
             notlp = '$notlp',
-            gambar = '$gambar' where id = $id
+            gambar = '$gambar'
+             where id = $id
         ";
         
         mysqli_query($koneksi, $query);
+        header("Location: index.php");
+
         return mysqli_affected_rows($koneksi);
     }
     // $mhs = mysqli_fetch_array($result);
